@@ -1,7 +1,8 @@
 
-from henchman.rule import Rule
+from henchman.rule import RuleType
+from henchman import Henchman, rules
 
-class Package(Rule):
+class PackageType(RuleType):
 
     __named_attribute__ = 'name'
 
@@ -21,3 +22,9 @@ class Package(Rule):
 
         elif self.params.get('ensure') == 'held':
             pass
+
+def Package(name, **kwargs):
+    rules.add(PackageType(name,**kwargs))
+
+def PACKAGE(name):
+    return rules.get("PackageType", name)

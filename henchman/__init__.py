@@ -1,5 +1,7 @@
 
-from henchman.rule import Rule
-from henchman.file import File
-from henchman.package import Package
-from henchman.host import Host
+from henchman.main import Henchman, rules
+from henchman.rule import RuleType
+from henchman.file import FileType, File, FILE
+from henchman.package import PackageType, Package, PACKAGE
+from henchman.host import HostType, Host, HOST
+

@@ -1,9 +1,11 @@
 
-from henchman.rule import Rule
+from henchman.rule import RuleType
+from henchman import Henchman, rules
+
 import os
 import os.path
 
-class File(Rule):
+class FileType(RuleType):
 
     __named_attribute__ = 'path'
 
@@ -78,3 +80,9 @@ class File(Rule):
 
         elif self.params.get('ensure') == 'present':
             self.present()
+
+def File(name, **kwargs):
+    rules.add(FileType(name,**kwargs))
+
+def FILE(name):
+    return rules.get("FileType", name)

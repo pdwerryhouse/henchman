@@ -1,7 +1,7 @@
 
-from henchman.rule import Rule
+from henchman.rule import RuleType
 
-class Host(Rule):
+class HostType(RuleType):
 
     __named_attribute__ = 'name'
 
@@ -12,3 +12,10 @@ class Host(Rule):
 
         elif self.params.get('ensure') == 'absent':
             pass
+
+def Host(name, **kwargs):
+    rules.add(HostType(name,**kwargs))
+
+def HOST(name):
+    return rules.get("HostType", name)
+

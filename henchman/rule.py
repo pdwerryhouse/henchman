@@ -1,5 +1,5 @@
 
-class Rule(object):
+class RuleType(object):
 
     def __init__(self, name, **kwargs):
 
