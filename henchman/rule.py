@@ -13,5 +13,4 @@ class RuleType(object):
 
     def __str__(self):
         (x, y) = self.rulename
-        return x + " " + y
-
+        return "[ %s: %s ]" % (x,y)

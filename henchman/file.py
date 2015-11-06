@@ -85,4 +85,4 @@ def File(name, **kwargs):
     rules.add(FileType(name,**kwargs))
 
 def FILE(name):
-    return rules.get("FileType", name)
+    return ("FileType", name)
