@@ -12,9 +12,24 @@ class UserType(RuleType):
     def create(self):
         try:
             user = pwd.getpwnam(self.params.get('name'))
+            return
         except KeyError as e:
             user = None
         
+        uid = self.params.get('uid')
+        gid = self.params.get('gid')
+        comment = self.params.get('comment')
+
+        options = []
+
+        if uid != None: options.append("-u %s" % (uid))
+        if gid != None: options.append("-g %s" % (gid))
+        if comment != None: options.append("-c '%s'" % (comment))
+
+        options_string = string.join(options," ")
+
+        os.system("useradd %s %s" % (options_string, self.params.get('name')))
+
     def remove(self):
         try:
             user = pwd.getpwnam(self.params.get('name'))
