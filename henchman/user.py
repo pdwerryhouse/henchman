@@ -4,6 +4,7 @@ from henchman import Henchman, rules
 
 import pwd
 import os
+import string
 
 class UserType(RuleType):
 
@@ -19,12 +20,14 @@ class UserType(RuleType):
         uid = self.params.get('uid')
         gid = self.params.get('gid')
         comment = self.params.get('comment')
+        shell = self.params.get('shell')
 
         options = []
 
         if uid != None: options.append("-u %s" % (uid))
         if gid != None: options.append("-g %s" % (gid))
         if comment != None: options.append("-c '%s'" % (comment))
+        if shell != None: options.append("-c '%s'" % (shell))
 
         options_string = string.join(options," ")
 
