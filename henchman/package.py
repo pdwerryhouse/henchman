@@ -2,20 +2,36 @@
 from henchman.rule import RuleType
 from henchman import Henchman, rules
 
+import apt
+
 class PackageType(RuleType):
 
     __named_attribute__ = 'name'
 
+    def install(self):
+        cache = apt.Cache()
+        pkg = cache[self.params.get('name')]
+        pkg.mark_install()
+        cache.commit()
+        pass
+
+    def uninstall(self):
+        cache = apt.Cache()
+        pkg = cache[self.params.get('name')]
+        pkg.mark_delete()
+        cache.commit()
+        pass
+
     def operate(self):
 
         if self.params.get('ensure') in (None, "present", "installed"):
-            pass
+            self.install()
 
         elif self.params.get('ensure') == 'absent':
-            pass
+            self.uninstall()
 
         elif self.params.get('ensure') == 'purged':
-            pass
+            self.uninstall()
 
         elif self.params.get('ensure') == 'latest':
             pass

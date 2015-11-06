@@ -18,7 +18,7 @@ class FileType(RuleType):
 
     def owner(self, path):
         if self.params.get('owner') != None:
-            os.chown(path, self.params.get('owner'))
+            os.chown(path, self.params.get('owner'), -1)
 
     def group(self, path):
         if self.params.get('group') != None:
