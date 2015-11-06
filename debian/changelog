@@ -1,11 +1,5 @@
-henchman (0.0.2) unstable; urgency=medium
+henchman (0.0.3) unstable; urgency=medium
 
   * New release
 
- -- Paul Dwerryhouse <paul@dwerryhouse.com.au>  Fri, 06 Nov 2015 14:56:52 +1100
-
-henchman (0.0.1) unstable; urgency=low
-
-  * Initial Release.
-
- -- Paul Dwerryhouse <paul@dwerryhouse.com.au>  Fri,  6 Nov 2015 14:10:04 +1100
+ -- Paul Dwerryhouse <paul@dwerryhouse.com.au>  Fri, 06 Nov 2015 15:51:30 +1100
