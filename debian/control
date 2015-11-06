@@ -1,0 +1,12 @@
+Source: henchman
+Section: admin
+Priority: optional
+Maintainer: Paul Dwerryhouse <paul@dwerryhouse.com.au>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: henchman
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Orchestration tool
+ Orchestration tool
