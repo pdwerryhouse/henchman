@@ -27,7 +27,7 @@ class UserType(RuleType):
         if uid != None: options.append("-u %s" % (uid))
         if gid != None: options.append("-g %s" % (gid))
         if comment != None: options.append("-c '%s'" % (comment))
-        if shell != None: options.append("-c '%s'" % (shell))
+        if shell != None: options.append("-s '%s'" % (shell))
 
         options_string = string.join(options," ")
 
