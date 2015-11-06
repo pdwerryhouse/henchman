@@ -1,5 +1,6 @@
 
 from henchman.rule import RuleType
+from henchman import Henchman, rules
 
 class HostType(RuleType):
 

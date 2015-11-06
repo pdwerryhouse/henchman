@@ -1,7 +1,9 @@
 
 from henchman.rule import RuleType
+from henchman import Henchman, rules
+
 import pwd
-import os.system
+import os
 
 class UserType(RuleType):
 
