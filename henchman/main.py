@@ -26,7 +26,7 @@ class Henchman(object):
 
     def run(self):
         for i in self.queue:
-            self.rules[i].operate()
+            self.rules[i].run()
 
 
 rules = Henchman()

@@ -6,7 +6,7 @@ class HostType(RuleType):
 
     __named_attribute__ = 'name'
 
-    def operate(self):
+    def run(self):
 
         if self.params.get('ensure') in (None, "present"):
             pass

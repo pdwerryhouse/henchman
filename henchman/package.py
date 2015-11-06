@@ -22,7 +22,7 @@ class PackageType(RuleType):
         cache.commit()
         pass
 
-    def operate(self):
+    def run(self):
 
         if self.params.get('ensure') in (None, "present", "installed"):
             self.install()

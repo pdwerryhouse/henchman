@@ -23,7 +23,7 @@ class UserType(RuleType):
 
         os.system("userdel %s" % (self.params.get('name')))
 
-    def operate(self):
+    def run(self):
 
         if self.params.get('ensure') in (None, "present"):
             self.create()

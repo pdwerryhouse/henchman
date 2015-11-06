@@ -64,7 +64,7 @@ class FileType(RuleType):
         # XXX
         pass
 
-    def operate(self):
+    def run(self):
 
         if self.params.get('ensure') in (None, "file"):
             self.file()
