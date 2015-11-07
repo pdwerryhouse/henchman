@@ -9,9 +9,6 @@ class FileType(RuleType):
 
     __named_attribute__ = 'path'
 
-    #def __init__(self):
-    #    super(File, self).__init__()
-
     def mode(self, path):
         if self.params.get('mode') != None:
             os.chmod(path, self.params.get('mode'))

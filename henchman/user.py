@@ -1,7 +1,9 @@
 
 from henchman.rule import RuleType
 from henchman import Henchman, rules
-import henchman.provider.user.usermod
+
+# This will be fixed when we have more than one provider
+import henchman.provider.user.usermod as provider
 
 import pwd
 import os
@@ -12,15 +14,18 @@ class UserType(RuleType):
     __named_attribute__ = 'name'
 
     def create(self):
-        henchman.provider.user.usermod.Usermod.create(self.params)
+        provider.create(self.params)
 
     def remove(self):
-        henchman.provider.user.usermod.Usermod.remove(self.params)
+        provider.remove(self.params)
 
     def run(self):
 
         if self.params.get('ensure') in (None, "present"):
-            self.create()
+            if not provider.exists(self.params.get('name')):
+                self.create()
+            else:
+                provider.sync(self.params)
 
         elif self.params.get('ensure') == 'absent':
             self.remove()

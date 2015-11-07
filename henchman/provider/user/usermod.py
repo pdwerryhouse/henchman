@@ -3,36 +3,62 @@ import pwd
 import os
 import string
 
-class Usermod(object):
+def exists(name):
+    try:
+        user = pwd.getpwnam(name)
+    except KeyError:
+        return False
 
-    @staticmethod
-    def create(params):
-        try:
-            user = pwd.getpwnam(params.get('name'))
-            return
-        except KeyError as e:
-            user = None
-        
-        uid = params.get('uid')
-        gid = params.get('gid')
-        comment = params.get('comment')
-        shell = params.get('shell')
+    return True
 
-        options = []
+def sync(params):
 
-        if uid != None: options.append("-u %s" % (uid))
-        if gid != None: options.append("-g %s" % (gid))
-        if comment != None: options.append("-c '%s'" % (comment))
-        if shell != None: options.append("-s '%s'" % (shell))
+    uid = params.get('uid')
+    gid = params.get('gid')
+    comment = params.get('comment')
+    shell = params.get('shell')
+    home = params.get('home')
 
-        options_string = string.join(options," ")
+    options = []
 
-        os.system("useradd %s %s" % (options_string, params.get('name')))
+    if uid != None: options.append("-u %s" % (uid))
+    if gid != None: options.append("-g %s" % (gid))
+    if comment != None: options.append("-c '%s'" % (comment))
+    if shell != None: options.append("-s '%s'" % (shell))
+    if home != None: options.append("-d '%s'" % (home))
 
-    @staticmethod
-    def remove(params):
-        try:
-            user = pwd.getpwnam(params.get('name'))
-        except KeyError as e:
-            return
+    options_string = string.join(options," ")
+
+    os.system("usermod %s %s" % (options_string, params.get('name')))
+    
+def create(params):
+    try:
+        user = pwd.getpwnam(params.get('name'))
+        return
+    except KeyError as e:
+        user = None
+    
+    uid = params.get('uid')
+    gid = params.get('gid')
+    comment = params.get('comment')
+    shell = params.get('shell')
+    home = params.get('home')
+
+    options = []
+
+    if uid != None: options.append("-u %s" % (uid))
+    if gid != None: options.append("-g %s" % (gid))
+    if comment != None: options.append("-c '%s'" % (comment))
+    if shell != None: options.append("-s '%s'" % (shell))
+    if home != None: options.append("-d '%s'" % (home))
+
+    options_string = string.join(options," ")
+
+    os.system("useradd %s %s" % (options_string, params.get('name')))
+
+def remove(params):
+    try:
+        user = pwd.getpwnam(params.get('name'))
+    except KeyError as e:
+        return
 
