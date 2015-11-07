@@ -12,10 +12,10 @@ class UserType(RuleType):
     __named_attribute__ = 'name'
 
     def create(self):
-        henchman.provider.user.usermod.Usermod.create(kwargs)
+        henchman.provider.user.usermod.Usermod.create(self.params)
 
     def remove(self):
-        henchman.provider.user.usermod.Usermod.remove(kwargs)
+        henchman.provider.user.usermod.Usermod.remove(self.params)
 
     def run(self):
 

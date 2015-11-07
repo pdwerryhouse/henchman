@@ -5,17 +5,18 @@ import string
 
 class Usermod(object):
 
-    def create(self, **kwargs):
+    @staticmethod
+    def create(params):
         try:
-            user = pwd.getpwnam(kwargs.get('name'))
+            user = pwd.getpwnam(params.get('name'))
             return
         except KeyError as e:
             user = None
         
-        uid = kwargs.get('uid')
-        gid = kwargs.get('gid')
-        comment = kwargs.get('comment')
-        shell = kwargs.get('shell')
+        uid = params.get('uid')
+        gid = params.get('gid')
+        comment = params.get('comment')
+        shell = params.get('shell')
 
         options = []
 
@@ -26,11 +27,12 @@ class Usermod(object):
 
         options_string = string.join(options," ")
 
-        os.system("useradd %s %s" % (options_string, kwargs.get('name')))
+        os.system("useradd %s %s" % (options_string, params.get('name')))
 
-    def remove(self, **kwargs):
+    @staticmethod
+    def remove(params):
         try:
-            user = pwd.getpwnam(kwargs.get('name'))
+            user = pwd.getpwnam(params.get('name'))
         except KeyError as e:
             return
 
