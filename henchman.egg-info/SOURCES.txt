@@ -6,9 +6,13 @@ henchman/host.py
 henchman/main.py
 henchman/package.py
 henchman/rule.py
+henchman/user.py
 henchman.egg-info/PKG-INFO
 henchman.egg-info/SOURCES.txt
 henchman.egg-info/dependency_links.txt
 henchman.egg-info/entry_points.txt
 henchman.egg-info/top_level.txt
 henchman.egg-info/zip-safe
+henchman/provider/__init__.py
+henchman/provider/user/__init__.py
+henchman/provider/user/usermod.py
