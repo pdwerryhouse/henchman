@@ -25,7 +25,7 @@ def sync(params):
     
 def create(params):
     try:
-        group = grp.getpwnam(params.get('name'))
+        group = grp.getgrnam(params.get('name'))
         return
     except KeyError as e:
         user = None
