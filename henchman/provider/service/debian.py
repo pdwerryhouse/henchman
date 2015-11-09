@@ -2,7 +2,9 @@
 import os
 
 def enable(params):
-    pass
+    name = params.get('name')
+    os.system("/usr/sbin/update-rc.d %s enable" % (name,)
 
 def disable(params):
-    pass
+    name = params.get('name')
+    os.system("/usr/sbin/update-rc.d %s disable" % (name,)
