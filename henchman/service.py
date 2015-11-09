@@ -2,6 +2,10 @@
 from henchman.rule import RuleType
 from henchman import Henchman, rules
 
+import henchman.provider.service.upstart
+
+import os.path
+
 class ServiceType(RuleType):
 
     __named_attribute__ = 'name'
@@ -9,11 +13,23 @@ class ServiceType(RuleType):
 
     def run(self):
 
-        if self.params.get('ensure') in (None, "present"):
-            pass
+        provider = None
+        name = self.params.get('name')
 
-        elif self.params.get('ensure') == 'absent':
-            pass
+        if os.path.exists('/bin/systemctl'):
+            provider = henchman.provider.service.systemctl
+        
+        elif os.path.exists('/etc/init/%s.conf' % (name,)):
+            provider = henchman.provider.service.upstart
+
+        else:
+            provider = henchman.provider.service.debian
+
+        if self.params.get('enable') == "true":
+            provider.enable(self.params)
+
+        elif self.params.get('enable') == 'false':
+            provider.disable(self.params)
 
 def Service(name, **kwargs):
     rules.add(ServiceType(name,**kwargs))
