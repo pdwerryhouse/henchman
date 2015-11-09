@@ -2,7 +2,9 @@
 import os
 
 def enable(params):
-    pass
+    name = params.get('name')
+    os.system('/bin/systemctl enable %s.service' % (name,))
 
 def disable(params):
-    pass
+    name = params.get('name')
+    os.system('/bin/systemctl disable %s.service' % (name,))
