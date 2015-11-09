@@ -2,7 +2,7 @@
 from henchman.rule import RuleType
 from henchman import Henchman, rules
 
-import henchman.provider.user.usermod as provider
+import henchman.provider.group.groupmod as provider
 
 class GroupType(RuleType):
 
