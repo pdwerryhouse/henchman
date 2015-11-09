@@ -7,6 +7,7 @@ import apt
 class PackageType(RuleType):
 
     __named_attribute__ = 'name'
+    __refname__ = 'PACKAGE'
 
     def install(self):
         cache = apt.Cache()

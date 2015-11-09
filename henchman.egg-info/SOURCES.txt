@@ -2,10 +2,12 @@ setup.cfg
 setup.py
 henchman/__init__.py
 henchman/file.py
+henchman/group.py
 henchman/host.py
 henchman/main.py
 henchman/package.py
 henchman/rule.py
+henchman/service.py
 henchman/user.py
 henchman.egg-info/PKG-INFO
 henchman.egg-info/SOURCES.txt

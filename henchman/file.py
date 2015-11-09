@@ -8,6 +8,7 @@ import os.path
 class FileType(RuleType):
 
     __named_attribute__ = 'path'
+    __refname__ = "FILE"
 
     def mode(self, path):
         if self.params.get('mode') != None:

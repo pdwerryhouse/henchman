@@ -2,13 +2,12 @@
 from henchman.rule import RuleType
 from henchman import Henchman, rules
 
-# This will be fixed when we have more than one provider
 import henchman.provider.user.usermod as provider
 
-class UserType(RuleType):
+class GroupType(RuleType):
 
     __named_attribute__ = 'name'
-    __refname__ = 'USER'
+    __refname__ = 'GROUP'
 
     def run(self):
 
@@ -21,9 +20,9 @@ class UserType(RuleType):
         elif self.params.get('ensure') == 'absent':
             provider.remove(self.params)
 
-def User(name, **kwargs):
-    rules.add(UserType(name,**kwargs))
+def Group(name, **kwargs):
+    rules.add(GroupType(name,**kwargs))
 
-def USER(name):
-    return ("UserType", name)
+def GROUP(name):
+    return ("GroupType", name)
 

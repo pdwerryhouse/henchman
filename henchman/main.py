@@ -1,6 +1,5 @@
 
 import networkx as nx
-import matplotlib.pyplot as plt
 
 class Henchman(object):
 
@@ -26,6 +25,7 @@ class Henchman(object):
                 self.G.add_edge(v.params.get("require"),k)
 
         for i in nx.topological_sort(self.G):
+            print "Executing %s." % self.rules[i].get_refname()
             self.rules[i].run()
 
 rules = Henchman()

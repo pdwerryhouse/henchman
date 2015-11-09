@@ -29,7 +29,7 @@ def sync(params):
 
     options_string = string.join(options," ")
 
-    os.system("usermod %s %s" % (options_string, params.get('name')))
+    os.system("usermod %s %s 2>/dev/null" % (options_string, params.get('name')))
     
 def create(params):
     try:
@@ -57,8 +57,7 @@ def create(params):
     os.system("useradd %s %s" % (options_string, params.get('name')))
 
 def remove(params):
-    try:
-        user = pwd.getpwnam(params.get('name'))
-    except KeyError as e:
+    if not exists(params.get('name')):
         return
 
+    os.system("usermod %s" % (params.get('name')))

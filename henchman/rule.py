@@ -11,6 +11,10 @@ class RuleType(object):
     def get_rulename(self):
         return self.rulename
 
+    def get_refname(self):
+        (x,y) = self.rulename
+        return "%s('%s')" % (self.__refname__, y)
+
     def __str__(self):
         (x, y) = self.rulename
         return "[ %s: %s ]" % (x,y)
