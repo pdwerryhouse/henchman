@@ -3,6 +3,8 @@ from henchman.rule import RuleType
 from henchman import Henchman, rules
 
 import henchman.provider.service.upstart
+import henchman.provider.service.systemd
+import henchman.provider.service.debian
 
 import os.path
 
@@ -17,7 +19,7 @@ class ServiceType(RuleType):
         name = self.params.get('name')
 
         if os.path.exists('/bin/systemctl'):
-            provider = henchman.provider.service.systemctl
+            provider = henchman.provider.service.systemd
         
         elif os.path.exists('/etc/init/%s.conf' % (name,)):
             provider = henchman.provider.service.upstart
