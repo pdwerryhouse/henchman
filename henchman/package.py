@@ -43,4 +43,4 @@ def Package(name, **kwargs):
     rules.add(PackageType(name,**kwargs))
 
 def PACKAGE(name):
-    return rules.get("PackageType", name)
+    return ("PackageType", name)

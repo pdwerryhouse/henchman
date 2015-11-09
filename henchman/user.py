@@ -34,5 +34,5 @@ def User(name, **kwargs):
     rules.add(UserType(name,**kwargs))
 
 def USER(name):
-    return rules.get("UserType", name)
+    return ("UserType", name)
 

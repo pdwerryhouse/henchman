@@ -14,3 +14,11 @@ class RuleType(object):
     def __str__(self):
         (x, y) = self.rulename
         return "[ %s: %s ]" % (x,y)
+
+    def go(self):
+        if self.completed == True:  return
+        self.completed = True
+        self.run()
+
+    def run(self):
+        pass

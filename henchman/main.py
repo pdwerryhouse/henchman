@@ -1,10 +1,11 @@
 
+import networkx as nx
+import matplotlib.pyplot as plt
 
 class Henchman(object):
 
     def __init__(self):
         self.rules = {}
-        self.queue = []
 
     def add(self, rule):
         name = rule.get_rulename()
@@ -17,16 +18,14 @@ class Henchman(object):
     def get(self, ruletype, name):
         return self.rules[(ruletype, name)]
 
-    def calculate_dependencies(self):
-        for k,v in self.rules.iteritems():
-            if v.params.get("require") == None:
-                self.queue.insert(0,k)
-            else:
-                self.queue.append(k)
-
     def run(self):
-        for i in self.queue:
-            self.rules[i].run()
+        self.G = nx.DiGraph()
+        for k,v in self.rules.iteritems():
+            self.G.add_node(k)
+            if v.params.get("require") != None:
+                self.G.add_edge(v.params.get("require"),k)
 
+        for i in nx.topological_sort(self.G):
+            self.rules[i].run()
 
 rules = Henchman()

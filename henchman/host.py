@@ -18,5 +18,5 @@ def Host(name, **kwargs):
     rules.add(HostType(name,**kwargs))
 
 def HOST(name):
-    return rules.get("HostType", name)
+    return ("HostType", name)
 
