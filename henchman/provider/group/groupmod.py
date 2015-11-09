@@ -5,7 +5,7 @@ import string
 
 def exists(name):
     try:
-        group = pwd.getgrnam(name)
+        group = grp.getgrnam(name)
     except KeyError:
         return False
 
@@ -25,7 +25,7 @@ def sync(params):
     
 def create(params):
     try:
-        group = pwd.getpwnam(params.get('name'))
+        group = grp.getpwnam(params.get('name'))
         return
     except KeyError as e:
         user = None
